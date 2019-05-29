@@ -9,6 +9,7 @@
     "build": "npm run clean && cross-env NODE_ENV=production webpack -p --progress --colors",
     "clean": "rm -rf build/",
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch --coverage"
   },
