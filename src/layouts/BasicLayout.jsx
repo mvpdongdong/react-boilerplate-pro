@@ -9,7 +9,9 @@ import get from 'lodash/get';
 import map from 'lodash/map';
 import head from 'lodash/head';
 import isEmpty from 'lodash/isEmpty';
-import { Avatar, Dropdown, Menu, Icon, Breadcrumb, Popover } from 'antd';
+import {
+  Avatar, Dropdown, Menu, Icon, Breadcrumb, Popover,
+} from 'antd';
 import Sider from 'react-sider';
 import 'react-sider/lib/index.css';
 import menuData from 'app/config/menu';
@@ -78,8 +80,7 @@ class BasicLayout extends Component {
         {intl.formatMessage({ id: 'basicLayout_readall_notice' })}
       </div>
     )
-      :
-      map(notices, notice => (
+      : map(notices, notice => (
         <div
           key={notice.id}
           className={`${prefixCls}-noticeItem`}
@@ -144,16 +145,19 @@ class BasicLayout extends Component {
     return (
       <Breadcrumb className={`${prefixCls}-breadcrumb`}>
         {map(breadcrumbData, (item, idx) => (
-          idx === breadcrumbData.length - 1 ?
-            <Breadcrumb.Item key={item.href}>
-              {intl.formatMessage({ id: item.text })}
-            </Breadcrumb.Item>
-            :
-            <Breadcrumb.Item key={item.href}>
-              <Link href={item.href} to={item.href}>
+          idx === breadcrumbData.length - 1
+            ? (
+              <Breadcrumb.Item key={item.href}>
                 {intl.formatMessage({ id: item.text })}
-              </Link>
-            </Breadcrumb.Item>
+              </Breadcrumb.Item>
+            )
+            : (
+              <Breadcrumb.Item key={item.href}>
+                <Link href={item.href} to={item.href}>
+                  {intl.formatMessage({ id: item.text })}
+                </Link>
+              </Breadcrumb.Item>
+            )
         ))}
       </Breadcrumb>
     );
